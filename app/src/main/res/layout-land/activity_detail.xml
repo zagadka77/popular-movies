@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.example.android.popularmovies.data.Movie" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/normal_margin">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:context="com.example.android.popularmovies.DetailActivity">
+
+                    <!-- ImageView for the movie's backdrop image -->
+
+                    <!-- The movie's title -->
+                    <ImageView
+                        android:id="@+id/iv_backdrop_image"
+                        android:layout_width="@dimen/no_margin"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:layout_marginLeft="@dimen/normal_margin"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:layout_marginStart="@dimen/normal_margin"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/poster_content_description"
+                        android:minHeight="@dimen/backdrop_image_min_height"
+                        android:scaleType="fitStart"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline"
+                        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@android:color/background_light" />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="@dimen/no_margin"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:layout_marginStart="@dimen/small_margin"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:text="@{movie.title}"
+                        android:textColor="@android:color/black"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/detail_font_size_title"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Movie Title" />
+
+                    <!-- The movie's release date -->
+                    <TextView
+                        android:id="@+id/tv_release_date"
+                        android:layout_width="@dimen/no_margin"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:layout_marginStart="@dimen/small_margin"
+                        android:text="@{movie.releaseDate}"
+                        android:textColor="@android:color/black"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/detail_font_size_release_date"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                        tools:text="Release Date" />
+
+                    <!-- The user rating -->
+                    <TextView
+                        android:id="@+id/tv_user_rating"
+                        android:layout_width="@dimen/no_margin"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/no_margin"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:layout_marginRight="@dimen/no_margin"
+                        android:layout_marginStart="@dimen/small_margin"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:text="@{Double.toString(movie.userRating)}"
+                        android:textColor="@android:color/black"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/detail_font_size_rating"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_release_date"
+                        tools:text="User Rating" />
+
+                    <!-- The user rating converted to a 5 star RatingBar -->
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:layout_marginStart="@dimen/small_margin"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:rating="@{((float) movie.getUserRating() / 10) * 5}"
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_user_rating" />
+
+                    <!-- The movie's overview (synopsis) -->
+                    <TextView
+                        android:id="@+id/tv_overview"
+                        android:layout_width="@dimen/no_margin"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/normal_margin"
+                        android:layout_marginEnd="@dimen/normal_margin"
+                        android:layout_marginStart="@dimen/normal_margin"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:text="@{movie.overview}"
+                        android:textColor="@android:color/black"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/detail_font_size_overview"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_backdrop_image"
+                        tools:text="Overview" />
+
+                    <!-- The loading indicator for the backdrop image -->
+                    <ProgressBar
+                        android:id="@+id/detailProgressBar"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:layout_marginTop="@dimen/very_big_margin"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_backdrop_image"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/iv_backdrop_image" />
+
+                    <!-- An error message for the backdrop image -->
+                    <TextView
+                        android:id="@+id/detailErrorTV"
+                        android:layout_width="@dimen/no_margin"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/small_margin"
+                        android:layout_marginEnd="@dimen/big_margin"
+                        android:layout_marginStart="@dimen/big_margin"
+                        android:layout_marginTop="@dimen/big_margin"
+                        android:text="@string/detail_image_error_message"
+                        android:textAlignment="center"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_size_error"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_backdrop_image"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_backdrop_image"
+                        app:layout_constraintStart_toStartOf="@+id/iv_backdrop_image"
+                        app:layout_constraintTop_toTopOf="@+id/iv_backdrop_image" />
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.65" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</layout>

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="movie_detail_label">Movie Detail</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_search">Search movies</string>
+    <string name="action_credits">Credits</string>
+    <string name="search_for">Search for:&#160;</string>
+    <string name="credits_tmdb">This product uses the TMDb API but is not endorsed or certified by TMDb.</string>
+    <string name="credits_tmdb_link">https://www.themoviedb.org/</string>
+    <string name="credits_tmdb_logo_cont_descr">TheMovieDB Logo</string>
+    <string name="pref_sortby_key">sortby</string>
+    <string name="pref_sortby_title">Sort by</string>
+    <string name="pref_sortby_default" translatable="false">popular</string>
+    <string name="pref_sortby_top_rated_label">Top rated</string>
+    <string name="pref_sortby_popular_label">Popular</string>
+    <string name="pref_sortby_top_rated" translatable="false">top_rated</string>
+    <string name="pref_sortby_popular" translatable="false">popular</string>
+    <string name="detail_error_message">There was an error loading the movie\'s details</string>
+    <string name="search_error_message">There was an error in the search query</string>
+    <string name="detail_image_error_message">No image available</string>
+    <string name="main_error_message">No movies data available</string>
+    <string name="poster_content_description">Poster image</string>
+    <string name="actual_page">Page %1$d of %2$d</string>
+    <string name="go_to_page">Go to page</string>
+    <string name="enter_page">Enter page number:</string>
+    <string name="go">Go</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_page_error">This page doesn\'t exist</string>
+
+</resources>
